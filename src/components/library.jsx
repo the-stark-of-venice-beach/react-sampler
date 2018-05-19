@@ -17,6 +17,7 @@ class Library extends React.Component {
         <div id="samples">
             {samples}
         </div>
+        <button id="loop" onClick={this.props.mapSample}>Loop</button>
         <form>
           <input type="file" onChange={this.props.addSample} multiple/>
         </form>
