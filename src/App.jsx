@@ -79,6 +79,7 @@ class App extends React.Component {
         ],
       mapText: '',
       mapMode: false,
+      loopMode: false,
     }
     this.clickHandler = this.clickHandler.bind(this);
     this.removeTransition = this.removeTransition.bind(this);
@@ -87,12 +88,17 @@ class App extends React.Component {
   }
 
   mapSample(e) {
+    if (e.target.id === 'loop') {
+      this.state.loopMode = true;
+      return;
+    }
     this.state.mapText = e.target.dataset.source;
     this.state.mapMode = true;
     let buttons = document.getElementsByClassName('button');
       for (let i = 0; i < buttons.length; i++) {
         buttons[i].style.background = "linear-gradient(to top, rgb(149, 104, 255), rgb(132, 0, 255))";
     }
+    document.getElementById('map-mode').style.visibility = 'visible';
   }
   
   clickHandler(e) {
@@ -100,13 +106,25 @@ class App extends React.Component {
     let id = e.target.id;
     let key = document.querySelector(`div[data-key="${code}"]`);
     let audio = document.querySelector(`audio[data-key="${code}"]`);
-    console.log(code, id, key, audio)
     if (this.state.mapMode) {
       audio.src = this.state.mapText;
       let buttons = document.getElementsByClassName('button');
       for (let i = 0; i < buttons.length; i++) {
         buttons[i].style.background = "linear-gradient(to top, rgb(255, 253, 131), rgb(255, 230, 0))";
       }
+      document.getElementById('map-mode').style.visibility = 'hidden';
+    }
+    else if (this.state.loopMode) {
+      if (audio.loop === true) {
+        audio.loop = false
+        key.style.background = "linear-gradient(to top, rgb(255, 253, 131), rgb(255, 230, 0))";
+      }
+      else {
+        audio.loop = true;
+        key.style.background = "rgba(255, 165, 0, 1)";
+      } 
+      this.state.loopMode = false;
+      return;
     }
     else {
       if (!audio) return;
@@ -141,6 +159,9 @@ class App extends React.Component {
     window.addEventListener('keydown', this.clickHandler);
     return (
       <div>
+        <div id="map-mode">
+          Map Mode
+        </div>
         <Board keyCodes={this.state.keyCodes} keySymbols={this.state.keySymbols} clickHandler={this.clickHandler} removeTransition={this.removeTransition} audioFiles={this.state.audioFiles}/>
         <VizLib audioFiles={this.state.audioFiles} addSample={this.addSample} mapSample={this.mapSample}/>
         <Settings />
