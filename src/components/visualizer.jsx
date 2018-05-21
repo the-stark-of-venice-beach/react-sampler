@@ -1,14 +1,13 @@
 import React from 'react';
 import { render } from 'react-dom';
 
-class Visualizer extends React.Component {
-  render() {
+const Visualizer = (props) => {
+  
     return (
       <div id="visualizer">
         Visualizer goes in here
       </div>
     )
   }
-}
 
 export default Visualizer;
