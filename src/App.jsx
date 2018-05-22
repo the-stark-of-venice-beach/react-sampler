@@ -62,7 +62,7 @@ class App extends React.Component {
         },
         {
           name: 'bongo',
-          source:'samples/bongo.WAV'
+          source: 'samples/bongo.WAV',
         },
         {
           name: 'haht',
