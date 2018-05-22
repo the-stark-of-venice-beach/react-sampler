@@ -1,0 +1,16 @@
+
+From the UNIX terminal...at the UNIX command prompt:
+ sudo -u postgres createdb -U postgres "react-sampler"
+
+From the UNIX terminal...to start the psql command line interface (cli)
+ sudo -u postgres psql
+
+From the psql prompt:
+GRANT all privileges on database "react-sampler" to student;
+
+
+Some psql commands:
+\du : show all users
+\l : show databases
+\connect database_name : connects and uses a database
+\dt: list tables in current database

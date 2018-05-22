@@ -45,11 +45,27 @@ app.get('/build/bundle.js', (req, res) => {
 
 app.post('/user', jsonParser, userController.createUser);
 
+
 app.post('/config', jsonParser, configController.createConfig);
 
 database.connect((err) => {
-  if (err) console.log(`err: ${err}`);
-  else console.log('connected to db');
+  if (err) {
+    console.log(`err: ${err}`);
+  } else {
+
+    console.log('connected to db');
+  
+    const q = `CREATE TABLE IF NOT EXISTS sampler_user (_id SERIAL PRIMARY KEY, username VARCHAR(200), password VARCHAR(200));
+    create table if not exists config (_id SERIAL PRIMARY KEY, user_id VARCHAR(200), keymap VARCHAR(1024))`;
+  
+    database.query(q, function(err, result) {
+      if (err) console.log("error: ", err);
+      console.log('result: ', result);
+    });
+  
+  }
+
+
 });
 
 server.listen(port, () => {
