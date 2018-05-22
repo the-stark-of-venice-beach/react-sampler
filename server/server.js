@@ -16,6 +16,7 @@ const jsonParser = bodyParser.json();
 // --------------- local imports ---------------
 
 const userController = require('./controllers/userController.js');
+const configController = require('./controllers/configController.js');
 const database = require('./database.js');
 
 // local variables ---------------
@@ -43,6 +44,8 @@ app.get('/build/bundle.js', (req, res) => {
 });
 
 app.post('/user', jsonParser, userController.createUser);
+
+app.post('/config', jsonParser, configController.createConfig);
 
 database.connect((err) => {
   if (err) console.log(`err: ${err}`);
