@@ -1,8 +1,8 @@
 import React from 'react';
 import { render } from 'react-dom';
 
-import Library from './library.jsx';
-import Visualizer from './visualizer.jsx';
+import Library from './Library.jsx';
+import Visualizer from './Visualizer.jsx';
 
 const VizLib = (props) => {
 
