@@ -45,6 +45,7 @@ app.get('/build/bundle.js', (req, res) => {
 
 app.post('/user', jsonParser, userController.createUser);
 
+app.post('/login', jsonParser, userController.verifyUser);
 
 app.post('/config', jsonParser, configController.createConfig);
 
