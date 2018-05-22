@@ -45,13 +45,13 @@ app.get('/build/bundle.js', (req, res) => {
 app.post('/user', jsonParser, userController.createUser);
 
 database.connect((err, conn, done) => {
-  if (err) console.log(`err: ${err}`);
-  else {
+  if (err) {
+    console.log(`err: ${err}`);
+  } else {
     console.log('connected to db');
   
-    const q = `create table if not exists user (_id SERIAL PRIMARY KEY, id VARCHAR(200), password VARCHAR(200));
+    const q = `CREATE TABLE IF NOT EXISTS sampler_user (_id SERIAL PRIMARY KEY, username VARCHAR(200), password VARCHAR(200));
     create table if not exists config (_id SERIAL PRIMARY KEY, user_id VARCHAR(200), keymap VARCHAR(1024))`;
-    // const q = "create table if not exists config (_id SERIAL PRIMARY KEY, user_id VARCHAR(200), keymap VARCHAR(1024))";
   
     database.query(q, function(err, result) {
       if (err) console.log("error: ", err);
@@ -60,9 +60,6 @@ database.connect((err, conn, done) => {
   
   
   }
-
-
-
 
 
 });
