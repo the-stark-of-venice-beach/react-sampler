@@ -16,6 +16,7 @@ const jsonParser = bodyParser.json();
 // --------------- local imports ---------------
 
 const userController = require('./controllers/userController.js');
+const configController = require('./controllers/configController.js');
 const database = require('./database.js');
 
 // local variables ---------------
@@ -44,10 +45,14 @@ app.get('/build/bundle.js', (req, res) => {
 
 app.post('/user', jsonParser, userController.createUser);
 
-database.connect((err, conn, done) => {
+
+app.post('/config', jsonParser, configController.createConfig);
+
+database.connect((err) => {
   if (err) {
     console.log(`err: ${err}`);
   } else {
+
     console.log('connected to db');
   
     const q = `CREATE TABLE IF NOT EXISTS sampler_user (_id SERIAL PRIMARY KEY, username VARCHAR(200), password VARCHAR(200));
