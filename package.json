@@ -18,6 +18,9 @@
     "url": "https://github.com/the-stark-of-venice-beach/react-sampler/issues"
   },
   "homepage": "https://github.com/the-stark-of-venice-beach/react-sampler#readme",
+  "engines": {
+    "node": "9.10.1"
+  },
   "dependencies": {
     "body-parser": "^1.18.3",
     "express": "^4.16.3",
