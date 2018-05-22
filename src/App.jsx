@@ -5,7 +5,7 @@ import Board from './components/Board.jsx';
 import VizLib from './components/Vizlib.jsx';
 import Settings from './components/Settings.jsx';
 
-class App extends React.Compfonent {
+class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
