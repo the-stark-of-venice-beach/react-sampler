@@ -12,7 +12,7 @@ const fs = require("fs");
 const pg = require('pg');
 
 const conString =
-'postgres://duooyrso:di84nxi2WcxHQzS6cwjXhKS9gWRFS33R@pellefant.db.elephantsql.com:5432/duooyrso';
+'postgres://nipjwpye:_UpXKJTMZQhtyiV4l-9AJa1ME8oi3xy2@nutty-custard-apple.db.elephantsql.com:5432/nipjwpye';
 
 const client = new pg.Client(conString);
 
