@@ -1,9 +1,9 @@
 import React from 'react';
 import { render } from 'react-dom';
 
-import Board from './components/board.jsx';
-import VizLib from './components/vizlib.jsx';
-import Settings from './components/settings.jsx';
+import Board from './components/Board.jsx';
+import VizLib from './components/Vizlib.jsx';
+import Settings from './components/Settings.jsx';
 
 class App extends React.Component {
   constructor(props) {

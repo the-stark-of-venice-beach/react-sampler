@@ -34,7 +34,7 @@ body {
   border-radius: 5px;
   border: 1px solid  rgba(255, 165, 0, .3);
   font-family: 'Comfortaa', sans-serif;
-  font-size: 18px;
+  font-size: 10px;
   text-transform: uppercase;
   box-shadow: 2px 2px #ffd000;
 }
@@ -54,6 +54,7 @@ body {
 .character {
   visibility: hidden;
 }
+
 
 #playback {
   margin: 2em auto;
