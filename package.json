@@ -10,14 +10,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/SnotOtters/react-sampler.git"
+    "url": "https://github.com/the-stark-of-venice-beach/react-sampler"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/SnotOtters/react-sampler/issues"
+    "url": "https://github.com/the-stark-of-venice-beach/react-sampler/issues"
   },
-  "homepage": "https://github.com/SnotOtters/react-sampler#readme",
+  "homepage": "https://github.com/the-stark-of-venice-beach/react-sampler#readme",
   "dependencies": {
     "body-parser": "^1.18.3",
     "express": "^4.16.3",
