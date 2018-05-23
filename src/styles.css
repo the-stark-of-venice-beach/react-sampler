@@ -140,3 +140,8 @@ body {
   text-align: right;
   z-index: 10;
 }
+
+#login-background-image {
+  position: absolute;
+  width : 40%;
+}
