@@ -17,6 +17,7 @@ const jsonParser = bodyParser.json();
 
 const userController = require('./controllers/userController.js');
 const configController = require('./controllers/configController.js');
+const wavController = require('./controllers/wavController.js');
 const database = require('./database.js');
 
 // local variables ---------------
@@ -48,6 +49,10 @@ app.post('/user', jsonParser, userController.createUser);
 app.post('/login', jsonParser, userController.verifyUser);
 
 app.post('/config', jsonParser, configController.createConfig);
+
+app.post('/wav', jsonParser, wavController.createWav);
+
+app.post('/wav', jsonParser, wavController.getWav);
 
 database.connect((err) => {
   if (err) {
