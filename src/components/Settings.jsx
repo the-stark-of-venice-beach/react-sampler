@@ -5,7 +5,7 @@ const Settings = (props) => {
 
     return (
       <div id="settings">
-        <div id="info"><i className="fas fa-info-circle"></i></div>
+        <div id="info"><i onClick={props.clickHandler} className="fas fa-info-circle"></i></div>
       </div>
     )
 }

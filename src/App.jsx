@@ -89,6 +89,8 @@ class App extends React.Component {
     this.addSample = this.addSample.bind(this);
     this.mapSample = this.mapSample.bind(this);
     this.pausePlay = this.pausePlay.bind(this);
+
+    this.padinfo = this.padinfo.bind(this);
     this.saveConfig = this.saveConfig.bind(this);
   }
 
@@ -98,12 +100,22 @@ class App extends React.Component {
       return;
     }
     this.state.mapText = e.target.dataset.source;
+
     this.state.mapMode = true;
     let buttons = document.getElementsByClassName('button');
     for (let i = 0; i < buttons.length; i += 1) {
       buttons[i].style.background = 'linear-gradient(to top, rgb(149, 104, 255), rgb(132, 0, 255))';
     }
     document.getElementById('map-mode').style.visibility = 'visible';
+  }
+
+  padinfo() {
+
+    let items = document.getElementsByClassName('character');
+    for (let i = 0; i < items.length; i++) {
+      if (items[i].style.visibility === "visible") items[i].style.visibility = "hidden";
+      else items[i].style.visibility = "visible";
+    }
   }
 
   clickHandler(e) {
@@ -185,14 +197,16 @@ class App extends React.Component {
 
   render() {
     window.addEventListener('keydown', this.clickHandler);
+
     return (
       <div>
         <div id='map-mode'>
           Map Mode
         </div>
+
         <Board keyCodes={this.state.keyCodes} keySymbols={this.state.keySymbols} clickHandler={this.clickHandler} removeTransition={this.removeTransition} audioFiles={this.state.audioFiles} pausePlay={this.pausePlay} />
         <VizLib audioFiles={this.state.audioFiles} addSample={this.addSample} mapSample={this.mapSample} saveConfig={this.saveConfig} />
-        <Settings />
+        <Settings clickHandler={this.padinfo}/>
       </div>
     );
   }
