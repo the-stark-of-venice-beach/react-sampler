@@ -66,7 +66,7 @@ database.connect((err) => {
   
     database.query(q, function(err, result) {
       if (err) console.log("error: ", err);
-      console.log('result: ', result);
+      // console.log('result: ', result);
     });
   
   }
