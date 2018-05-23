@@ -6,17 +6,14 @@ import App from './App.jsx';
 import Login from "./components/Login.jsx";
 
 class Main extends React.Component {
- constructor(props){
-   super(props);
+  constructor(props) {
+    super(props);
+    this.state = {
+      loggedIn: false,
+    }
+    this.clickHandler = this.clickHandler.bind(this);
+  }
 
-   this.state = {
-     loggedIn: false,
-   }
-   this.clickHandler = this.clickHandler.bind(this);
-
- }
- 
- 
  
  clickHandler(e) {
    e.preventDefault();
@@ -36,11 +33,11 @@ class Main extends React.Component {
             this.setState(tempState);
           }
         });
-      }
-      
-      if (e.target.id === "login") {
-        console.log("e target id: ", e.target.id)
-        axios
+    }
+
+    if (e.target.id === "login") {
+      console.log("e target id: ", e.target.id)
+      axios
         .post("/login", {
           username: e.target.parentElement.username.value,
           password: e.target.parentElement.password.value
@@ -61,24 +58,18 @@ class Main extends React.Component {
     }
   }
 
-
-
-
- render() {
-   console.log("Main this.state.loggedIn: " ,  this.state.loggedIn);
-   let label = <Login clickHandler={this.clickHandler}/>;
-   if (this.state.loggedIn === true) {
-     label = <App />;
-   }
+  render() {
+    console.log("Main this.state.loggedIn: ", this.state.loggedIn);
+    let label = <Login clickHandler={this.clickHandler} />;
+    if (this.state.loggedIn === true) {
+      label = <App />;
+    }
     return (
       <div id="mainpage">
         {label}
       </div>
     );
-
- }
-
+  }
 }
-
 
 export default Main;

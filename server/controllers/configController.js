@@ -11,7 +11,8 @@ const createConfig = (req, res) => {
       res.send('Internal error (saving to database)');
     } else {
       const config = dbRes.rows[0];
-      res.json(config);
+      console.log('saved config: ', config);
+      res.status(200).send('ok');
     }
   });
 };

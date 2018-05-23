@@ -57,26 +57,20 @@ app.post('/config', jsonParser, configController.createConfig);
 
 app.post('/wav', jsonParser, wavController.createWav);
 
-app.post('/wav', jsonParser, wavController.getWav);
+app.post('/getWav', jsonParser, wavController.getWav);
 
 database.connect((err) => {
   if (err) {
     console.log(`err: ${err}`);
   } else {
-
     console.log('connected to db');
-  
     const q = `CREATE TABLE IF NOT EXISTS sampler_user (_id SERIAL PRIMARY KEY, username VARCHAR(200) NOT NULL, password VARCHAR(200) NOT NULL);
     create table if not exists config (_id SERIAL PRIMARY KEY, user_id VARCHAR(200) NOT NULL, keymap VARCHAR(1024) NOT NULL)`;
-  
-    database.query(q, function(err, result) {
+    database.query(q, function (err, result) {
       if (err) console.log("error: ", err);
       // console.log('result: ', result);
     });
-  
   }
-
-
 });
 
 server.listen(port, () => {
