@@ -85,6 +85,7 @@ class App extends React.Component {
     this.removeTransition = this.removeTransition.bind(this);
     this.addSample = this.addSample.bind(this);
     this.mapSample = this.mapSample.bind(this);
+    this.pausePlay = this.pausePlay.bind(this);
   }
 
   mapSample(e) {
@@ -152,6 +153,13 @@ class App extends React.Component {
     e.target.classList.remove('playing');
   }
 
+  pausePlay() {
+    let x = document.querySelectorAll("audio");
+    x.forEach((ele) => {
+      ele.pause();
+    })
+  }
+
   render() {
     window.addEventListener('keydown', this.clickHandler);
     return (
@@ -159,7 +167,7 @@ class App extends React.Component {
         <div id='map-mode'>
           Map Mode
         </div>
-        <Board keyCodes={this.state.keyCodes} keySymbols={this.state.keySymbols} clickHandler={this.clickHandler} removeTransition={this.removeTransition} audioFiles={this.state.audioFiles}/>
+        <Board keyCodes={this.state.keyCodes} keySymbols={this.state.keySymbols} clickHandler={this.clickHandler} removeTransition={this.removeTransition} audioFiles={this.state.audioFiles} pausePlay={this.pausePlay}/>
         <VizLib audioFiles={this.state.audioFiles} addSample={this.addSample} mapSample={this.mapSample}/>
         <Settings />
       </div>

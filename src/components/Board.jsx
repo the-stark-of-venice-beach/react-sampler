@@ -18,7 +18,7 @@ const Board = props => {
     return (
       <div id="board">
       {board}
-        <Playback />
+        <Playback pausePlay={props.pausePlay}/>
       </div>
     )
   }

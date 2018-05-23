@@ -6,7 +6,7 @@ const createUser = (req, res) => {
 
   const query = `INSERT INTO sampler_user(username, password) VALUES('${req.body.username}', crypt('${req.body.password}', gen_salt('md5')));`;
 
-  // console.log("insert query : ", query);
+  console.log('insert query : ', query);
 
   db.query(query, (dbErr, dbRes) => {
     if (dbErr) {
