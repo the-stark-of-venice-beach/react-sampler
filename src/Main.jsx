@@ -34,8 +34,9 @@ class Main extends React.Component {
           console.log("res.data: ", res.data);
           if (res.data === "ok") {
             console.log("Setting State to Logged In!");
-            this.state.loggedIn = true;
-            this.setState(this.state.loggedIn);
+            let tempState = Object.assign({}, this.state);
+            tempState.loggedIn = true;
+            this.setState(tempState);
           }
         });
       }
@@ -52,8 +53,10 @@ class Main extends React.Component {
           console.log("res.data value ", res.data["?column?"]);
           if (res.data['?column?'] === true) {
             console.log("Setting State to Logged In!");
-            this.state.loggedIn = true;
-            this.setState(this.state.loggedIn);
+            // this.state.loggedIn = true;
+            let tempState = Object.assign({}, this.state);
+            tempState.loggedIn = true;
+            this.setState(tempState);
           }
         });
     }
@@ -65,7 +68,7 @@ class Main extends React.Component {
  render() {
    console.log("Main this.state.loggedIn: " ,  this.state.loggedIn);
    let label = <Login clickHandler={this.clickHandler}/>;
-   if (this.props.loggedIn === true) {
+   if (this.state.loggedIn === true) {
      label = <App />;
    }
     return (
