@@ -14,11 +14,9 @@ class Main extends React.Component {
     this.clickHandler = this.clickHandler.bind(this);
   }
 
-  clickHandler(e) {
-    e.preventDefault();
-    console.log("event: ", e.target);
-    console.log("e.target.name: ", e.target.name);
-    console.log("e: ", e);
+ 
+ clickHandler(e) {
+   e.preventDefault();
     if (e.target.id === "signup") {
       console.log("e target id: ", e.target.id)
       axios
@@ -45,13 +43,15 @@ class Main extends React.Component {
           password: e.target.parentElement.password.value
         })
         .then(res => {
-          console.log("res.data: ", res.data);
-          console.log("res.data value ", res.data["?column?"]);
-          if (res.data['?column?'] === true) {
+          let userData = res.data;
+          console.log("userData: ", userData);
+          if (userData['authenticated'] === true) {
             console.log("Setting State to Logged In!");
-            // this.state.loggedIn = true;
+
             let tempState = Object.assign({}, this.state);
             tempState.loggedIn = true;
+            tempState.userid = userData['_id'];
+            tempState.username = userData['username'];
             this.setState(tempState);
           }
         });
