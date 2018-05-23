@@ -18,7 +18,7 @@ const Library = props => {
         </div>
         <button id="loop" onClick={props.mapSample}>Loop</button>
         <form>
-          <input type="file" onChange={props.addSample} multiple/>
+          <input type="file" onChange={props.addSample} multiple accept=".wav"/>
         </form>
       </div>
     )
