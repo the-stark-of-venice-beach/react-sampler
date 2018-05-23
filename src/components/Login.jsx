@@ -2,6 +2,9 @@ import React from "react";
 import Sign from "./Sign.jsx";
 
 class Login extends React.Component {
+    constructor (props){
+      super(props);
+    }
 
     render(){
 
