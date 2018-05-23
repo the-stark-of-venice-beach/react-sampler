@@ -6,23 +6,30 @@
   "scripts": {
     "build": "webpack --mode production",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack-dev-server --mode development --hot --inline --progress --colors --watch --content-base --config webpack.config.js"
+    "webpack-server": "webpack-dev-server --mode development --hot --inline --progress --colors --watch --content-base --config webpack.config.js",
+    "start": "node server/server.js",
+    "heroku-postbuild": "webpack -p --config ./webpack.config.js --progress"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/SnotOtters/react-sampler.git"
+    "url": "https://github.com/the-stark-of-venice-beach/react-sampler"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/SnotOtters/react-sampler/issues"
+    "url": "https://github.com/the-stark-of-venice-beach/react-sampler/issues"
   },
-  "homepage": "https://github.com/SnotOtters/react-sampler#readme",
+  "homepage": "https://github.com/the-stark-of-venice-beach/react-sampler#readme",
+  "engines": {
+    "node": "9.10.1"
+  },
   "dependencies": {
+    "body-parser": "^1.18.3",
     "express": "^4.16.3",
     "formidable": "^1.2.1",
     "fs": "0.0.1-security",
     "path": "^0.12.7",
+    "pg": "^7.4.3",
     "react": "^16.3.2",
     "react-dom": "^16.3.2",
     "react-recorder": "^1.0.0",

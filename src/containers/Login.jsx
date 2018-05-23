@@ -1,8 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import { withRouter } from "react-router-dom";
-
-import Sign from "../components/Sign.jsx";
+import Sign from "../credentials_components/Sign.jsx";
 
 class Login extends React.Component {
 
@@ -21,4 +18,4 @@ class Login extends React.Component {
     }
     
     
-    export default withRouter(Login);
+    export default Login;

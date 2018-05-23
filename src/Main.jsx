@@ -7,7 +7,7 @@ class Main extends React.Component {
     constructor(props){
         super(props);
         this.state = {
-          loggedIn = false,
+          loggedIn: false,
         }
         this.clickHandler = this.clickHandler.bind(this);
     }
