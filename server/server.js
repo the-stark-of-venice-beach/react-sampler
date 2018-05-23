@@ -1,6 +1,6 @@
 // --------------- 3rd party modules ---------------
-
-const app = require('express')();
+const express = require('express');
+const app = express();
 const http = require('http');
 const path = require('path');
 const bodyParser = require('body-parser');
@@ -33,6 +33,9 @@ app.use((req, res, next) => {
   );
   next();
 });
+
+app.use(express.static("samples"));
+app.use(express.static("src"));
 
 app.get('/', (req, res) => {
   // res.send('hello world!');
