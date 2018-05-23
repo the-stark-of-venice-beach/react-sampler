@@ -1,5 +1,6 @@
 import React from 'react';
 import { render } from 'react-dom';
+import axios from "axios";
 
 import Board from './components/Board.jsx';
 import VizLib from './components/Vizlib.jsx';
@@ -88,6 +89,7 @@ class App extends React.Component {
     this.addSample = this.addSample.bind(this);
     this.mapSample = this.mapSample.bind(this);
     this.pausePlay = this.pausePlay.bind(this);
+    this.saveConfig = this.saveConfig.bind(this);
   }
 
   mapSample(e) {
@@ -159,7 +161,26 @@ class App extends React.Component {
     let x = document.querySelectorAll("audio");
     x.forEach((ele) => {
       ele.pause();
-    })
+    });
+  }
+
+  saveConfig() {
+    const x = document.querySelectorAll('audio');
+    const sources = [];
+    x.forEach((audio) => {
+      sources.push(audio.src);
+    });
+    axios
+      .post('/config', {
+        user_id: this.state.user_id,
+        keymap: JSON.stringify(sources),
+      })
+      .then((res) => {
+        console.log('res.data: ', res.data);
+        if (res.data === 'ok') {
+          alert('Saved config');
+        }
+      });
   }
 
   render() {
@@ -169,8 +190,8 @@ class App extends React.Component {
         <div id='map-mode'>
           Map Mode
         </div>
-        <Board keyCodes={this.state.keyCodes} keySymbols={this.state.keySymbols} clickHandler={this.clickHandler} removeTransition={this.removeTransition} audioFiles={this.state.audioFiles} pausePlay={this.pausePlay}/>
-        <VizLib audioFiles={this.state.audioFiles} addSample={this.addSample} mapSample={this.mapSample}/>
+        <Board keyCodes={this.state.keyCodes} keySymbols={this.state.keySymbols} clickHandler={this.clickHandler} removeTransition={this.removeTransition} audioFiles={this.state.audioFiles} pausePlay={this.pausePlay} />
+        <VizLib audioFiles={this.state.audioFiles} addSample={this.addSample} mapSample={this.mapSample} saveConfig={this.saveConfig} />
         <Settings />
       </div>
     );

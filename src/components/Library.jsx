@@ -20,6 +20,7 @@ const Library = props => {
         <form>
           <input type="file" onChange={props.addSample} multiple accept=".wav"/>
         </form>
+        <button onClick={props.saveConfig}>Save this map</button>
       </div>
     )
   
