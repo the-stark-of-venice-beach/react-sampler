@@ -25,6 +25,7 @@ db.query(query, (dbErr, dbRes) => {
     res.status(200);
     return res.end('ok');
   }
+
   });
 };
 

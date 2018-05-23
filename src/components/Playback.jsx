@@ -48,7 +48,7 @@ class Playback extends React.Component {
       <div id="playback">
         <button id="record" onClick={this.recordAudio}><i className="fas fa-circle"></i></button>
         <button><i className="fas fa-play"></i></button>
-        <button><i className="fas fa-pause"></i></button>
+        <button onClick={this.props.pausePlay}><i className="fas fa-pause"></i></button>
         <button onClick={this.stopRecording}><i className="fas fa-stop"></i></button>
       </div>
     )
