@@ -37,8 +37,9 @@ const verifyUser = (req, res) => {
   
   // const query = 'SELECT * FROM sampler_user WHERE username=$1 AND password=$2';
   // const values = [req.body.username, req.body.password];
-  const query = `SELECT password = crypt('${req.body.password}', password) FROM sampler_user WHERE username='${req.body.username}';`;
-  
+  const query = `SELECT _id, username, password = crypt('${req.body.password}', password) AS authenticated FROM sampler_user WHERE username='${req.body.username}';`;
+  // should return: columns _id, username, authenticated
+
   // SELECT password = crypt('icecream', password) FROM sampler_user WHERE username = 'kyle';
   
   console.log("verifyUser query: ", query);
@@ -49,7 +50,7 @@ const verifyUser = (req, res) => {
       res.send('Could not find username/password');
     } else {
       console.log('response from db: ', dbRes.rows[0]);
-      console.log('response from db: value ', dbRes.rows[0]['?column?']);
+      console.log('response from db: value ', dbRes.rows[0]['authenticated']);
       const user = dbRes.rows[0];
       res.json(user);
     }

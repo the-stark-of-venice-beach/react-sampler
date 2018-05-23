@@ -80,6 +80,8 @@ class App extends React.Component {
       mapText: '',
       mapMode: false,
       loopMode: false,
+      userid: '999',
+      username: 'noone'
     };
     this.clickHandler = this.clickHandler.bind(this);
     this.removeTransition = this.removeTransition.bind(this);
