@@ -34,8 +34,10 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use(express.static("samples"));
-app.use(express.static("src"));
+
+app.use('/samples', express.static(path.join(__dirname , '../samples')));
+app.use('/src', express.static(path.join(__dirname , "../src")));
+
 
 app.get('/', (req, res) => {
   // res.send('hello world!');
