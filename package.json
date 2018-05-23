@@ -7,7 +7,8 @@
     "build": "webpack --mode production",
     "test": "echo \"Error: no test specified\" && exit 1",
     "webpack-server": "webpack-dev-server --mode development --hot --inline --progress --colors --watch --content-base --config webpack.config.js",
-    "start": "node server/server.js"
+    "start": "node server/server.js",
+    "heroku-postbuild": "webpack -p --config ./webpack.config.js --progress"
   },
   "repository": {
     "type": "git",
