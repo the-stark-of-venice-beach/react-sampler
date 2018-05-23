@@ -9,7 +9,7 @@ const VizLib = (props) => {
     return (
       <div id='vizlib'>
         <Library audioFiles={props.audioFiles} addSample={props.addSample} mapSample={props.mapSample}/>
-        <Visualizer />
+        {/*<Visualizer />*/}
       </div>
     )
 }
