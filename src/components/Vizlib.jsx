@@ -5,13 +5,12 @@ import Library from './Library.jsx';
 import Visualizer from './Visualizer.jsx';
 
 const VizLib = (props) => {
-
-    return (
-      <div id='vizlib'>
-        <Library audioFiles={props.audioFiles} addSample={props.addSample} mapSample={props.mapSample} saveConfig={props.saveConfig} />
-        {/*<Visualizer />*/}
-      </div>
-    )
+  return (
+    <div id="vizlib">
+      <Library audioFiles={props.audioFiles} addSample={props.addSample} mapSample={props.mapSample} saveConfig={props.saveConfig} />
+      {/*<Visualizer />*/}
+    </div>
+  )
 }
 
 export default VizLib;

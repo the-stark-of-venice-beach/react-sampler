@@ -1,9 +1,7 @@
 import React, { PropTypes } from "react";
 
-const Sign = props => {
-
+const Sign = (props) => {
   // const submit = (e) => props.clickHandler;
-  
   return (
     <div id="log">
       {/*} <form class="user-form" onSubmit={(e) => submit(e)}> */}
