@@ -10,6 +10,8 @@ class Main extends React.Component {
     super(props);
     this.state = {
       loggedIn: false,
+      user_id:999,
+      username: 'noone'
     }
     this.clickHandler = this.clickHandler.bind(this);
   }
@@ -50,7 +52,7 @@ class Main extends React.Component {
 
             let tempState = Object.assign({}, this.state);
             tempState.loggedIn = true;
-            tempState.userid = userData['_id'];
+            tempState.user_id = userData['_id'];
             tempState.username = userData['username'];
             this.setState(tempState);
           }
@@ -62,7 +64,7 @@ class Main extends React.Component {
     console.log("Main this.state.loggedIn: ", this.state.loggedIn);
     let label = <Login clickHandler={this.clickHandler} />;
     if (this.state.loggedIn === true) {
-      label = <App />;
+      label = <App user_id={this.state.user_id} username={this.state.username}/>;
     }
     return (
       <div id="mainpage">

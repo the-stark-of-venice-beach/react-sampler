@@ -81,8 +81,9 @@ class App extends React.Component {
       mapText: '',
       mapMode: false,
       loopMode: false,
-      user_id: '999',
-      username: 'noone'
+      user_id: this.props.user_id,
+      username: this.props.username
+
     };
     this.clickHandler = this.clickHandler.bind(this);
     this.removeTransition = this.removeTransition.bind(this);
@@ -93,6 +94,31 @@ class App extends React.Component {
     this.padinfo = this.padinfo.bind(this);
     this.saveConfig = this.saveConfig.bind(this);
   }
+
+
+  componentDidMount() {
+
+    console.log('this.state.user_id: ', this.state.user_id);
+
+
+    axios
+      .post("/get_config", {
+        user_id: this.state.user_id
+      })
+      .then(res => {
+        // console.log("in componentDidMount... res.data: ", res.data);
+        // we need to parse the array and remap <audio> src
+        const x = document.querySelectorAll('audio');
+        let sources = JSON.parse(res.data.keymap);
+        for(let i=0; i<x.length; i++){
+          x[i].src=sources[i];
+          // console.log("changing element : ", x[i]);
+          // console.log("to source : ", x[i].src);
+        }
+
+      });
+  }
+
 
   mapSample(e) {
     if (e.target.id === 'loop') {

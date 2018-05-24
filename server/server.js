@@ -55,6 +55,8 @@ app.post('/login', jsonParser, userController.verifyUser);
 
 app.post('/config', jsonParser, configController.createConfig);
 
+app.post('/get_config', jsonParser, configController.getConfig);
+
 app.post('/wav', jsonParser, wavController.createWav);
 
 app.post('/getWav', jsonParser, wavController.getWav);
@@ -65,7 +67,7 @@ database.connect((err) => {
   } else {
     console.log('connected to db');
     const q = `CREATE TABLE IF NOT EXISTS sampler_user (_id SERIAL PRIMARY KEY, username VARCHAR(200) NOT NULL, password VARCHAR(200) NOT NULL);
-    create table if not exists config (_id SERIAL PRIMARY KEY, user_id VARCHAR(200) NOT NULL, keymap VARCHAR(1024) NOT NULL)`;
+    create table if not exists config (_id SERIAL PRIMARY KEY, user_id INTEGER NOT NULL, keymap VARCHAR(1024) NOT NULL)`;
     database.query(q, function (err, result) {
       if (err) console.log("error: ", err);
       // console.log('result: ', result);
