@@ -81,7 +81,7 @@ class App extends React.Component {
       mapText: '',
       mapMode: false,
       loopMode: false,
-      userid: '999',
+      user_id: '999',
       username: 'noone'
     };
     this.clickHandler = this.clickHandler.bind(this);

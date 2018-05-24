@@ -4,8 +4,7 @@ import { render } from 'react-dom';
 import Button from './Button.jsx';
 import Playback from './Playback.jsx';
 
-const Board = props => {
-
+const Board = (props) => {
   let board = [];
   for (let i = 0; i < 4; i++) {
     let buttonrow = [];
@@ -20,7 +19,7 @@ const Board = props => {
       {board}
       <Playback pausePlay={props.pausePlay} />
     </div>
-  )
-}
+  );
+};
 
 export default Board;
